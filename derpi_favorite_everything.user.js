@@ -14,6 +14,9 @@
 // ==/UserScript==
 
 var timeout_len = 2500; //timeout before moving on to the next page, in ms
+// this variable should to be set by user to the script has time to fav all the images on each page.
+// actual time varies with the number of images diplayed per page, computer speed, and internet connection speed
+// some results found to work: 2000 for 10 images, 10000 for 50 images.  ymmv
 
 //dont touch these
 var only_unfaved = true;
