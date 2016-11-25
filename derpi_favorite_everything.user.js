@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         derpi_favorite_everything
-// @version      0.1
+// @version      0.2
 // @description  Fave All on page, and the next page, and the next one, and then some more after that.
 // @include      https://derpiboo.ru/*
 // @include      https://derpibooru.org/*
