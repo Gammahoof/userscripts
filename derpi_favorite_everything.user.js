@@ -7,13 +7,14 @@
 // @include      https://trixiebooru.org/*
 // @grant       GM_getValue
 // @grant       GM_setValue
-// @grant		GM_deleteValue
+// @grant	GM_deleteValue
 // @grant       GM_registerMenuCommand
 // ==/UserScript==
 
 var only_unfaved = true;
 var loop = false;
 var terms;
+var timeout_len = 500;
 
 var tid = setInterval(function () {
 		if (document.readyState !== 'complete')
@@ -103,7 +104,7 @@ function fav_all_on_page() {
 
 	if (loop) {
 		nextPage();
-		setTimeout(nextPage, 100);
+		setTimeout(nextPage, timeout_len);
 	}
 }
 
