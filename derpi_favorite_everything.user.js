@@ -104,6 +104,12 @@ function fav_all_on_page() {
 			imagestocheck[i].click();
 		}
 	}
+	
+	if (imagestocheck.length == 0) {
+		if (!confirm("Search returned no results.  Continue?")) {
+			stop_loop();
+		}
+	}
 
 	if (loop) {
 		setTimeout(nextPage, timeout_len);
