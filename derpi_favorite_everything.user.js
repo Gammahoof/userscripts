@@ -106,7 +106,6 @@ function fav_all_on_page() {
 	}
 
 	if (loop) {
-		nextPage();
 		setTimeout(nextPage, timeout_len);
 	}
 }
