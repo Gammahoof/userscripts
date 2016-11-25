@@ -13,7 +13,7 @@
 
 var only_unfaved = true;
 var loop = false;
-var terms;
+var terms = "";
 var timeout_len = 500;
 
 var tid = setInterval(function () {
