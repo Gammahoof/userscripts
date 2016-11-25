@@ -11,7 +11,7 @@
 // @grant       GM_registerMenuCommand
 // ==/UserScript==
 
-var timeout_len = 500; //timeout before moving on to the next page, in ms
+var timeout_len = 2500; //timeout before moving on to the next page, in ms
 
 //dont touch these
 var only_unfaved = true;
