@@ -1,9 +1,8 @@
 // ==UserScript==
 // @name         fimfic_mark_as_read
 // @version      0.1
-// @description  Fave All on page, and the next page, and the next one, and then some more after that.
+// @description  Marks all chapters on the currently viewed story as read.  Button located under word count.
 // @include      https://www.fimfiction.net/story/*
-// @include      https://www.fimfiction.net/bookshelf/*
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @grant	GM_deleteValue
