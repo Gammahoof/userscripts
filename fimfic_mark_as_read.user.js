@@ -22,56 +22,74 @@ var only_unread = true;
 var loop = false;
 
 var tid = setInterval(function () {
-		if (document.readyState !== 'complete')
-			return;
-		clearInterval(tid);
-		onloaded();
-	}, 100);
+    if (document.readyState !== 'complete')
+        return;
+    clearInterval(tid);
+    onloaded();
+}, 100);
 
 function onloaded() {
-	//console.log("Running FavAll");
-	var css = ".FTMenu{ width:24px; height:24px; position:fixed; right:10px; bottom:10px; border-radius:9px } .FTB1{ background:#6EAEDE; } #FTSHButton{width:20px; height:20px; position:absolute; right:2px; bottom:2px; border-radius:7px} .FTBtn{ background:#A8CEEB;} .FTBtn:hover{background:#D4E7F5;}";
-	var style = document.createElement('style');
-	style.type = 'text/css';
-	if (style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		style.appendChild(document.createTextNode(css));
-	}
-	head = document.head || document.getElementsByTagName('head')[0];
-	head.appendChild(style);
-	var menudiv = document.createElement("div");
-	menudiv.setAttribute("class", "FTMenu FTB1");
-	menudiv.name = "FTMenu";
-	var menubutton = document.createElement("div");
-	menubutton.id = "FTSHButton";
-	menubutton.setAttribute("class", "FTBtn");
-	menudiv.appendChild(menubutton);
-	document.body.appendChild(menudiv);
+    //console.log("Running FavAll");
+    //var css = ".FTMenu{ width:24px; height:24px; position:fixed; right:10px; bottom:10px; border-radius:9px } .FTB1{ background:#6EAEDE; } #FTSHButton{width:20px; height:20px; position:absolute; right:2px; bottom:2px; border-radius:7px} .FTBtn{ background:#A8CEEB;} .FTBtn:hover{background:#D4E7F5;}";
+    //var style = document.createElement('style');
+    //style.type = 'text/css';
+    //if (style.styleSheet) {
+    //		style.styleSheet.cssText = css;
+    //	} else {//
+    //style.appendChild(document.createTextNode(css));
+    //}
+    //head = document.head || document.getElementsByTagName('head')[0];
+    //	head.appendChild(style);
+    //	var menudiv = document.createElement("div");
+    //	menudiv.setAttribute("class", "FTMenu FTB1");
+    //	menudiv.name = "FTMenu";
+    //	var menubutton = document.createElement("div");
+    //	menubutton.id = "FTSHButton";
+    //	menubutton.setAttribute("class", "FTBtn");
+    //	menudiv.appendChild(menubutton);
+    //	document.body.appendChild(menudiv);
 
 
+    var bottombox = document.getElementsByClassName("bottom")[0];
+    var word_count = bottombox.getElementsByClassName("word_count")[0];
 
-	mark_all_read();
+    var button = document.createElement("div");
+
+
+    var button_icon = document.createElement("div");
+    // button_icon.scr = "https://static.fimfiction.net/images/icons/red.png";
+    button_icon.setAttribute("class", "chapter-read-icon");
+    button_icon.setAttribute("title", "Click to mark all chapters as read");
+    button.appendChild(button_icon);
+    word_count.appendChild(button);
+    //bottombox.insertBefore(button, bottombox.children[4]);
+    //button_icon.class = "chapter-read-icon";
+
+    button.onclick = mark_all_read;
 }
 
 function mark_all_read() {
-	//console.log("Favoriting this page");
+   // console.log("Marking all chapters as read");
 
-	var chapterstocheck = document.getElementsByClassName("interaction--fave");
-		
-	if (chapterstocheck.length == 0) {
-		confirm("So, like, there's no chapters on this page...");
-		return;
-	}
-	
-	for (i = 0; i < imagestocheck.length; i++) {
-		if ((!hasClass(chapterstocheck[i], "active"))) {
-			chapterstocheck[i].click();
-		}
-	}
+    var chapter_containers = document.getElementsByClassName("chapters")[0];
+    chapter_containers = chapter_containers.getElementsByClassName("chapter_container");
+
+    if (chapter_containers.length === 0) {
+        //confirm("So, like, there's no chapters on this page, dude.");
+        return;
+    }
+
+//    console.log(chapter_containers.length + " chapters found");
+
+    for (i = 0; i < chapter_containers.length; i++) {
+        var chapter_read_icon = chapter_containers[i].getElementsByClassName("chapter-read-icon")[0];
+        if ((!hasClass(chapter_read_icon, "chapter-read"))) {
+            chapter_read_icon.click();
+        }
+    }
 
 }
 
 function hasClass(elem, klass) {
-	return (" " + elem.className + " ").indexOf(" " + klass + " ") > -1;
+    return (" " + elem.className + " ").indexOf(" " + klass + " ") > -1;
 }
